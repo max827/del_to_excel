@@ -89,7 +89,7 @@ def getPathDict(delFilesLongPath, colNameLongPath):
     dict = {}
     for delFilesPath in delFilesPathList:
         # 如果文件名包含del后缀，再对这个文件进行操作
-        if "del" in delFilesPath:
+        if "del" in delFilesPath and ".gz" not in delFilesPath:
             for colNamePath in colNamePathList:
                 # 保证这个文件是表头
                 if "xls" in colNamePath:
@@ -115,10 +115,10 @@ def formatCell(cell):
     return newCell
 
 if __name__ == "__main__":
-    delFilesLongPath = r'C:\Users\admin\Desktop\PBC\delFiles'
-    colNameLongPath = r'C:\Users\admin\Desktop\PBC\ColumnName'
+    delFilesLongPath = r'C:\Users\Administrator\Desktop\九月'
+    colNameLongPath = r'C:\Users\Administrator\Desktop\Col'
 
     dict = getPathDict(delFilesLongPath, colNameLongPath)
     for key, value in dict.items():
-        # print(key+": "+value)
+        print(key+": "+value)
         delToExcelWithColumnName(value, key)
